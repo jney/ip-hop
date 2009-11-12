@@ -8,7 +8,11 @@ from os import environ
 class MainHandler(webapp.RequestHandler):
 
   def get(self):
-    self.response.out.write("""<!DOCTYPE html>
+    format = self.request.get('format') or "html"
+    
+    if format == "html":
+      self.response.headers['Content-Type'] = 'text/html'
+      self.response.out.write("""<!DOCTYPE html>
 <?xml version="1.0" encoding="UTF-8"?>
 <html>
   <head>
@@ -28,12 +32,19 @@ class MainHandler(webapp.RequestHandler):
   </head>
   <body>
     <section>
-      <div id="holder"></div>
+      <div id="holder"><noscript>%s</noscript></div>
     </section>
   </body>
-</html>""" % (environ['REMOTE_ADDR']))
-
-
+</html>""" % (environ['REMOTE_ADDR'],environ['REMOTE_ADDR']))
+    elif format == "xml":
+      self.response.headers['Content-Type'] = 'text/xml'
+      self.response.out.write("""<?xml version='1.0' encoding="UTF-8"?>
+<current-ip>%s</current-ip>
+""" % (environ['REMOTE_ADDR']))
+    elif format == "json":
+      self.response.headers['Content-Type'] = 'text/json'
+      self.response.out.write("{currentIp:'%s'}" % (environ['REMOTE_ADDR']))
+  
 def main():
   application = webapp.WSGIApplication([('/', MainHandler)],
                                        debug=True)
