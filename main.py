@@ -44,6 +44,9 @@ class MainHandler(webapp.RequestHandler):
     elif format == "json":
       self.response.headers['Content-Type'] = 'text/json'
       self.response.out.write("{currentIp:'%s'}" % (environ['REMOTE_ADDR']))
+    else:
+      self.response.headers['Content-Type'] = 'text/plain'
+      self.response.out.write("Error: format '%s' is not supported" % (format))
   
 def main():
   application = webapp.WSGIApplication([('/', MainHandler)],
