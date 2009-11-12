@@ -10,27 +10,27 @@ window.onload = function () {
       attr({fill: "#000", opacity:.25, scale: ".1,.1" });
     str.translate(centerX(str), 0);
 
-  var asc = true;
+  var odd = true;
   
   (function(pos){
     var args = arguments;
     
-    if(pos==(str.length-1))
-      asc = false;
-    else if(pos == 0)
-      asc = true;
+    if(pos==(str.length)){
+      odd = !odd;
+      pos = 0;
+    }
     
-    if (asc) {
+    if (odd) {
       str[pos].animate({opacity:1}, 200, function(){
-        // this.animate({opacity:.5}, 200); // it is not executed why ?
-        this.attr({opacity:.6}); // but this works
+        var that = this;
+        setTimeout(function(){that.animate({opacity:.5}, 200)}, 0);
         args.callee(pos+1);
       });
     } else {
       str[pos].animate({opacity:1}, 200, function(){
-        // this.animate({opacity:.5}, 200); // it is not executed why ?
-        this.attr({opacity:.25}); // but this works
-        args.callee(pos-1);
+        var that = this;
+        setTimeout(function(){that.animate({opacity:.25}, 200)}, 0);
+        args.callee(pos+1);
       });
     }
   })(0);
