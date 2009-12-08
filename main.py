@@ -4,6 +4,7 @@ import wsgiref.handlers
 
 from google.appengine.ext import webapp
 from os import environ
+import re
 
 class MainHandler(webapp.RequestHandler):
 
@@ -11,8 +12,12 @@ class MainHandler(webapp.RequestHandler):
     format = self.request.get('format') or "html"
     
     if format == "html":
-      self.response.headers['Content-Type'] = 'text/html'
-      self.response.out.write("""<!DOCTYPE html>
+      if re.search('^curl.*', self.request.headers['User-Agent']):
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.out.write(environ['REMOTE_ADDR'])
+      else:
+        self.response.headers['Content-Type'] = 'text/html'
+        self.response.out.write("""<!DOCTYPE html>
 <?xml version="1.0" encoding="UTF-8"?>
 <html>
   <head>
@@ -44,6 +49,9 @@ class MainHandler(webapp.RequestHandler):
     elif format == "json":
       self.response.headers['Content-Type'] = 'text/json'
       self.response.out.write("{currentIp:'%s'}" % (environ['REMOTE_ADDR']))
+    elif format == "txt":
+      self.response.headers['Content-Type'] = 'text/plain'
+      self.response.out.write(environ['REMOTE_ADDR'])
     else:
       self.response.headers['Content-Type'] = 'text/plain'
       self.response.out.write("Error: format '%s' is not supported" % (format))
