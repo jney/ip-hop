@@ -12,10 +12,10 @@ window.onload = function () {
 
   var odd = true;
   
-  (function(pos){
+  (function (pos) {
     var args = arguments;
     
-    if(pos==(str.length)){
+    if (pos==(str.length)) {
       odd = !odd;
       pos = 0;
     }
@@ -34,51 +34,11 @@ window.onload = function () {
       });
     }
   })(0);
-    
-  // var mouseOut = function(){
-  //   button.attr({fill: "#eee"});
-  //   buttonLabel.attr({fill: "#555"});
-  //   button.node.style.cursor = "pointer";
-  //   buttonLabel.node.style.cursor = "pointer";
-  // }
-  // 
-  // var mouseOn = function(){
-  //   button.attr({fill: "#ccc"});
-  //   buttonLabel.attr({fill: "#000"});
-  // }
-  // 
-  // var click = function(){
-  //   var text = currentIp;
-  //   
-  //   if(window.clipboardData) {  
-  //     window.clipboardData.setData('text', text);  
-  //   } else {
-  //     var clipboarddiv = document.getElementById('divclipboardswf');  
-  //     if(clipboarddiv == null) {
-  //       clipboarddiv = document.createElement('div');  
-  //       clipboarddiv.setAttribute("name", "divclipboardswf");  
-  //       clipboarddiv.setAttribute("id", "divclipboardswf");  
-  //       document.body.appendChild(clipboarddiv);
-  //     }
-  //     clipboarddiv.innerHTML =
-  //       '<embed src="/swf/clipboard.swf" FlashVars="clipboard=' +
-  //       encodeURIComponent(text) +
-  //       '" width="0" height="0" type="application/x-shockwave-flash"></embed>';
-  //   }
-  //   
-  //   return false;
-  // }
-  // 
-  // var button = r.rect(350, 200, 100, 40, 10).
-  //   attr({fill: "#eee", "stroke-width":0}).
-  //   hover(mouseOn, mouseOut);
-  // 
-  // var buttonLabel = r.
-  //   text(400, 220, "copy to clipboard").
-  //   attr({fill: "#888"}).
-  //   toFront().
-  //   hover(mouseOn, mouseOut);
-  //   
-  // button.node.onclick = click;  
-  // buttonLabel.node.onclick = click;
+  
+  //
+  var clip = new ZeroClipboard.Client();
+  clip.setText(currentIp);
+  clip.setCSSEffects( true );
+  clip.glue('d_clip_button');
+  
 };

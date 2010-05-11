@@ -32,12 +32,17 @@ class MainHandler(webapp.RequestHandler):
     <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="/js/raphael-min.js" type="text/javascript"></script>
     <script src="/js/font.js" type="text/javascript"></script>
-    <script type="text/javascript">currentIp='%s'</script>
+    <script src="/zeroclipboard/ZeroClipboard.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      ZeroClipboard.setMoviePath( '/zeroclipboard/ZeroClipboard.swf' );
+      var currentIp='%s';
+    </script>
     <script src="/js/application.js" type="text/javascript"></script>
   </head>
   <body>
     <section>
       <div id="holder"><noscript>%s</noscript></div>
+      <div id="d_clip_button">COPY</div>
     </section>
   </body>
 </html>""" % (environ['REMOTE_ADDR'],environ['REMOTE_ADDR']))
