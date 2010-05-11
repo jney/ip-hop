@@ -11,7 +11,7 @@
   padding: 15px;
   text-align:center;
   text-transform: uppercase;
-  width:80px;
+  width:100px;
 }
 
 #d_clip_button.hover { background:#ccc; }

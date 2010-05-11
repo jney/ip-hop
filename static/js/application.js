@@ -39,6 +39,9 @@ window.onload = function () {
   var clip = new ZeroClipboard.Client();
   clip.setText(currentIp);
   clip.setCSSEffects( true );
+  clip.addEventListener( 'complete', function(client, text) {
+    document.getElementById('d_clip_button').innerHTML = 'COPIED!';
+  });
   clip.glue('d_clip_button');
   
 };
