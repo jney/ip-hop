@@ -44,15 +44,19 @@ class MainHandler(webapp.RequestHandler):
       <div id="holder"><noscript>%s</noscript></div>
       <div id="d_clip_button">COPY</div>
     </section>
-    <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-      try {
-        var pageTracker = _gat._getTracker("UA-3988705-4");
-        pageTracker._trackPageview();
-      } catch(err) {}
+    <script type="text/javascript"> 
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-3988705-4']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+        var ga = document.createElement('script');
+        ga.src = ('https:' == document.location.protocol ?
+            'https://ssl' : 'http://www') +
+            '.google-analytics.com/ga.js';
+        ga.setAttribute('async', 'true');
+        document.documentElement.firstChild.appendChild(ga);
+      })();
     </script>
   </body>
 </html>""" % (environ['REMOTE_ADDR'],environ['REMOTE_ADDR']))
