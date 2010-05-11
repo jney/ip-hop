@@ -44,6 +44,16 @@ class MainHandler(webapp.RequestHandler):
       <div id="holder"><noscript>%s</noscript></div>
       <div id="d_clip_button">COPY</div>
     </section>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-3988705-4");
+        pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
   </body>
 </html>""" % (environ['REMOTE_ADDR'],environ['REMOTE_ADDR']))
     elif format == "xml":
