@@ -1,7 +1,7 @@
 window.onload = function () {
   
   var centerX = function(e){
-    return (400 - (e.getBBox().width/2)); 
+    return (300 - (e.getBBox().width/2)); 
   }
   
   var r = Raphael("holder", 800, 300),

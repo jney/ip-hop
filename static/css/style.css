@@ -1,5 +1,6 @@
 body {
   font-family: 'Yanone Kaffeesatz', arial, serif;
+  margin:0;
 }
 
 h1 {
@@ -14,7 +15,10 @@ h2 {
 }
 
 section {
+  margin:0 auto;
+  margin-top:100px;
   text-align:center;
+  width:600px;
 }
 
 #d_clip_button {
@@ -37,5 +41,5 @@ section {
 
 #holder {
   margin:0 auto;
-  width:800px
+  width:600px
 }

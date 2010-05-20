@@ -61,6 +61,15 @@ class MainHandler(webapp.RequestHandler):
         document.documentElement.firstChild.appendChild(ga);
       })();
     </script>
+    <!-- IE HTML5 Compatibility --> 
+    <!--[if IE]> 
+      <script type="text/javascript"> 
+        (function () { 
+          var tags = "header article footer section".split(" ");
+          for (var i=0,l=tags.length;i<l;i+=1) document.createElement(tags[i]);
+        }()); 
+      </script> 
+    <![endif]-->
   </body>
 </html>""" % (environ['REMOTE_ADDR'],environ['REMOTE_ADDR']))
     elif format == "xml":
