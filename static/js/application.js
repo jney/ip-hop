@@ -40,7 +40,7 @@ window.onload = function () {
   clip.setText(currentIp);
   clip.setCSSEffects( true );
   clip.addEventListener( 'complete', function(client, text) {
-    document.getElementById('d_clip_button').innerHTML = 'COPIED!';
+    document.getElementById('d_clip_button').innerHTML = 'Copied!';
   });
   clip.glue('d_clip_button');
   

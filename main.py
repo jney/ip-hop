@@ -45,7 +45,7 @@ class MainHandler(webapp.RequestHandler):
       <h1>ip-hop.com</h1>
       <h2>Your current ip address is :</h2>
       <div id="holder"><noscript>%s</noscript></div>
-      <div id="d_clip_button">COPY IT</div>
+      <div id="d_clip_button">Copy it</div>
     </section>
     <script type="text/javascript"> 
       var _gaq = _gaq || [];
@@ -67,9 +67,29 @@ class MainHandler(webapp.RequestHandler):
         (function () { 
           var tags = "header article footer section".split(" ");
           for (var i=0,l=tags.length;i<l;i+=1) document.createElement(tags[i]);
-        }()); 
+        }());
       </script> 
     <![endif]-->
+    <script type="text/javascript">
+      var 
+        opacity = 0,
+        setOpacity = function (val) {
+          if(document.body.style.alpha) {
+            document.body.style.alpha.opacity = val;
+          } else {
+            document.body.style.opacity = val;
+          }
+        };
+
+      document.body.style.opacity = 0;
+      (function () {
+        var _method = arguments.callee;
+        setTimeout(function () {
+          setOpacity(opacity += 0.01);
+          if (document.body.style.opacity < 1) _method();
+        }, 1);
+      })();
+    </script>
   </body>
 </html>""" % (environ['REMOTE_ADDR'],environ['REMOTE_ADDR']))
     elif format == "xml":
