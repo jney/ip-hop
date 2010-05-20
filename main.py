@@ -29,6 +29,7 @@ class MainHandler(webapp.RequestHandler):
     <meta name="Rating" content="General">
     <meta name="Distribution" content="Global">
     <meta name="Identifier-url" content="http://www.ip-hop.com">
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
     <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="/js/raphael-min.js" type="text/javascript"></script>
     <script src="/js/font.js" type="text/javascript"></script>
@@ -41,8 +42,10 @@ class MainHandler(webapp.RequestHandler):
   </head>
   <body>
     <section>
+      <h1>ip-hop.com</h1>
+      <h2>Your current ip address is :</h2>
       <div id="holder"><noscript>%s</noscript></div>
-      <div id="d_clip_button">COPY</div>
+      <div id="d_clip_button">COPY IT</div>
     </section>
     <script type="text/javascript"> 
       var _gaq = _gaq || [];
